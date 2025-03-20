@@ -2,12 +2,8 @@
 
 This is a visual representation of the Priority Matrix (Impact vs. Effort) developed during Phase 3 of the workshop.
 
-<div class="svg-container">
-  <object data="./priority_matrix_visual.svg" type="image/svg+xml" style="width:100%; max-width:1000px; height:auto;">
-    Your browser does not support SVG
-  </object>
-  <a href="./priority_matrix_visual.svg" target="_blank">Open SVG in new tab</a>
-</div>
+![Priority Matrix](./priority_matrix_visual.png)
+
 
 ## About this matrix
 

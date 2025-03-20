@@ -2,12 +2,7 @@
 
 This is a visual capture of the brainstorming whiteboard from the Brand Building breakout session during Phase 2.
 
-<div class="svg-container">
-  <object data="./breakout_4_whiteboard.svg" type="image/svg+xml" style="width:100%; max-width:1600px; height:auto;">
-    Your browser does not support SVG
-  </object>
-  <a href="./breakout_4_whiteboard.svg" target="_blank">Open SVG in new tab</a>
-</div>
+![Breakout Whiteboard](./breakout_4_whiteboard.png)
 
 ## About this whiteboard
 

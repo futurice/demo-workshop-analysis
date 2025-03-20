@@ -2,12 +2,8 @@
 
 This is a visual representation of the SWOT analysis conducted during Phase 1 of the workshop.
 
-<div class="svg-container">
-  <object data="./swot_analysis_visual_final.svg" type="image/svg+xml" style="width:100%; max-width:1200px; height:auto;">
-    Your browser does not support SVG
-  </object>
-  <a href="./swot_analysis_visual_final.svg" target="_blank">Open SVG in new tab</a>
-</div>
+![SWOT Analysis](./swot_analysis.png)
+
 
 ## About this visualization
 
