@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Whiteboard background -->
+  <rect x="0" y="0" width="1000" height="800" fill="#f5f5f5" />
+  
+  <!-- Header bar -->
+  <rect x="0" y="0" width="1000" height="40" fill="#ffffff" stroke="#e0e0e0" stroke-width="1" />
+  
+  <!-- Board title -->
+  <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333333">Sustainable Fashion Co. - Strategic Initiatives Priority Matrix</text>
+  
+  <!-- Matrix container -->
+  <rect x="50" y="60" width="700" height="500" fill="#ffffff" stroke="#e0e0e0" stroke-width="1" rx="3" ry="3" />
+  
+  <!-- Matrix title -->
+  <text x="400" y="85" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333333" text-anchor="middle">Impact vs. Effort Assessment</text>
+  
+  <!-- Matrix quadrant dividers -->
+  <line x1="400" y1="110" x2="400" y2="510" stroke="#cccccc" stroke-width="2" />
+  <line x1="100" y1="310" x2="700" y2="310" stroke="#cccccc" stroke-width="2" />
+  
+  <!-- Matrix axis labels -->
+  <text x="400" y="535" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666666" text-anchor="middle">EFFORT</text>
+  <text x="60" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666666" text-anchor="middle" transform="rotate(-90 60,310)">IMPACT</text>
+  <text x="240" y="535" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle">LOW EFFORT</text>
+  <text x="560" y="535" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle">HIGH EFFORT</text>
+  <text x="25" y="210" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle" transform="rotate(-90 25,210)">HIGH IMPACT</text>
+  <text x="25" y="410" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle" transform="rotate(-90 25,410)">LOW IMPACT</text>
+  
+  <!-- Quadrant titles -->
+  <text x="240" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#00a385" text-anchor="middle">QUICK WINS</text>
+  <text x="560" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ff9d00" text-anchor="middle">MAJOR PROJECTS</text>
+  <text x="240" y="330" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2d9bf0" text-anchor="middle">FILL-INS</text>
+  <text x="560" y="330" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ff5252" text-anchor="middle">RECONSIDER</text>
+  
+  <!-- QUICK WINS STICKY NOTES (Purple/Pink) -->
+  
+  <!-- Enhanced social media strategy -->
+  <g transform="translate(110, 150) rotate(2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Enhanced social media strategy</div>
+        <div style="font-size: 9px; margin-top: 5px;">High impact for brand building; leverages existing resources</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Recycled material pilot collections -->
+  <g transform="translate(270, 140) rotate(-1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Recycled material pilot collections</div>
+        <div style="font-size: 9px; margin-top: 5px;">Test customer response using existing design process</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Selective influencer collaborations -->
+  <g transform="translate(120, 240) rotate(1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Selective influencer collaborations</div>
+        <div style="font-size: 9px; margin-top: 5px;">Careful vetting; leverages existing marketing budget</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Sustainability training for customer service -->
+  <g transform="translate(265, 240) rotate(-2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Sustainability training for CS teams</div>
+        <div style="font-size: 9px; margin-top: 5px;">Addresses critical gap; builds customer trust</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Supplier mapping (Tier 1) -->
+  <g transform="translate(190, 195) rotate(1.5)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Supplier mapping (Tier 1)</div>
+        <div style="font-size: 9px; margin-top: 5px;">Foundational work; enables other initiatives</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- MAJOR PROJECTS STICKY NOTES (Yellow/Orange) -->
+  
+  <!-- Website phased rebuild -->
+  <g transform="translate(415, 125) rotate(-1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Website phased rebuild (TOP PRIORITY)</div>
+        <div style="font-size: 9px; margin-top: 5px;">Critical for mobile users; enables other initiatives</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Resale program -->
+  <g transform="translate(555, 125) rotate(1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Resale program ("pre-loved" platform)</div>
+        <div style="font-size: 9px; margin-top: 5px;">New revenue stream; significant operational changes</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Expanded repair services -->
+  <g transform="translate(420, 215) rotate(2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Expanded repair services</div>
+        <div style="font-size: 9px; margin-top: 5px;">Customer loyalty benefit; requires space and training</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Recycled polyester transition -->
+  <g transform="translate(560, 215) rotate(-2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Recycled polyester transition (50%)</div>
+        <div style="font-size: 9px; margin-top: 5px;">Foundation of sustainability claims; phased approach</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Recycled cotton blends -->
+  <g transform="translate(485, 160) rotate(0)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Recycled cotton blends</div>
+        <div style="font-size: 9px; margin-top: 5px;">Quality and supply challenges; high environmental impact</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Supplier code of conduct -->
+  <g transform="translate(485, 260) rotate(-1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Supplier code of conduct</div>
+        <div style="font-size: 9px; margin-top: 5px;">Risk mitigation; regulatory preparedness</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Blockchain for transparency -->
+  <g transform="translate(640, 170) rotate(2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Blockchain for supply chain transparency</div>
+        <div style="font-size: 9px; margin-top: 5px;">Technically complex; requires supplier coordination</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Sustainability storytelling campaign -->
+  <g transform="translate(630, 260) rotate(-1.5)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">"Sustainability Journey" storytelling</div>
+        <div style="font-size: 9px; margin-top: 5px;">High impact brand building; content production needed</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Rental pilot program -->
+  <g transform="translate(560, 300) rotate(1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Rental pilot program</div>
+        <div style="font-size: 9px; margin-top: 5px;">Operationally complex; innovative positioning</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- FILL-INS STICKY NOTES (Blue) -->
+  
+  <!-- Improved recycling take-back program -->
+  <g transform="translate(110, 340) rotate(-1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Improved recycling take-back program</div>
+        <div style="font-size: 9px; margin-top: 5px;">Relatively straightforward; better visibility and incentives</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Ethical personalization framework -->
+  <g transform="translate(260, 350) rotate(1.5)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Ethical personalization framework</div>
+        <div style="font-size: 9px; margin-top: 5px;">Strategic document; guides data use and builds trust</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Design guidelines for durability -->
+  <g transform="translate(110, 430) rotate(1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Design guidelines for durability</div>
+        <div style="font-size: 9px; margin-top: 5px;">Documentation and training; shifts product development</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Quality protocols for recycled materials -->
+  <g transform="translate(260, 440) rotate(-1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Quality protocols for recycled materials</div>
+        <div style="font-size: 9px; margin-top: 5px;">Ensures customer expectations for quality are met</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- User-generated content challenges -->
+  <g transform="translate(185, 390) rotate(-2)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">UGC challenges</div>
+        <div style="font-size: 9px; margin-top: 5px;">Low effort; builds community engagement</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Customer research & segmentation -->
+  <g transform="translate(330, 400) rotate(1)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Customer research &amp; segmentation</div>
+        <div style="font-size: 9px; margin-top: 5px;">Leverage existing methodologies; enables targeting</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- TENCEL Lyocell expansion -->
+  <g transform="translate(340, 480) rotate(-1.5)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">TENCEL™ Lyocell expansion</div>
+        <div style="font-size: 9px; margin-top: 5px;">Medium impact; compatible with existing processes</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- RECONSIDER SECTION (Empty with note) -->
+  <g transform="translate(550, 400) rotate(0)">
+    <rect x="0" y="0" width="120" height="80" rx="3" ry="3" fill="#ffa3a3" stroke="#ff8a8a" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="5" y="5" width="110" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 11px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold; font-style: italic;">(No initiatives placed fully in this quadrant)</div>
+        <div style="font-size: 9px; margin-top: 5px;">Rental pilot program sits at the border with Major Projects</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Phase 1 section container -->
+  <rect x="50" y="580" width="700" height="200" fill="#ffffff" stroke="#e0e0e0" stroke-width="1" rx="3" ry="3" />
+  
+  <!-- Phase 1 title -->
+  <text x="400" y="605" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333333" text-anchor="middle">Phase 1 Implementation Priorities (Next Quarter)</text>
+  
+  <!-- Phase 1 legend -->
+  <text x="80" y="625" font-family="Arial, sans-serif" font-size="11" fill="#666666">Numbered in priority order. Each initiative has clear ownership, timeline and next steps.</text>
+  
+  <!-- PHASE 1 PRIORITIES STICKY NOTES -->
+  
+  <!-- Priority 1: Website phased rebuild -->
+  <g transform="translate(85, 635) rotate(-1)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ff6f00">1</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Website phased rebuild</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owner: Ben Carter</div>
+        <div style="font-size: 9px;">Team: Raj, Emily, Sophia</div>
+        <div style="font-size: 9px;">Timeline: 6 months</div>
+        <div style="font-size: 9px;">Next: Detailed project plan</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Priority 2: Recycled polyester transition -->
+  <g transform="translate(225, 635) rotate(1)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#ffda77" stroke="#ffbe42" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ff6f00">2</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Recycled polyester transition</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owner: Kenji Tanaka</div>
+        <div style="font-size: 9px;">Team: Lena, Carlos</div>
+        <div style="font-size: 9px;">Timeline: 30% in 6 months, 50% in 12 months</div>
+        <div style="font-size: 9px;">Next: Material transition roadmap</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Priority 3: Supplier mapping -->
+  <g transform="translate(365, 635) rotate(-1.5)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#b4006e">3</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Supplier mapping (Tier 1)</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owners: Sarah &amp; David</div>
+        <div style="font-size: 9px;">Timeline: 3 months</div>
+        <div style="font-size: 9px;">Next: Define data points to collect</div>
+        <div style="font-size: 9px;">Next: Supplier communication plan</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Priority 4: Enhanced social media strategy -->
+  <g transform="translate(505, 635) rotate(1)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#b4006e">4</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Enhanced social media strategy</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owner: Noah Wilson</div>
+        <div style="font-size: 9px;">Team: Priya, James</div>
+        <div style="font-size: 9px;">Timeline: Begin immediately, strategy doc in 2 weeks</div>
+        <div style="font-size: 9px;">Next: Content calendar</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Priority 5: Sustainability training -->
+  <g transform="translate(140, 740) rotate(-1)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#b4006e">5</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Sustainability training for CS teams</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owner: Aisha Khan</div>
+        <div style="font-size: 9px;">Team: Sarah, Maria</div>
+        <div style="font-size: 9px;">Timeline: Dev - 2 months, Full rollout - 4 months</div>
+        <div style="font-size: 9px;">Next: Knowledge gap assessment</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Priority 6: Recycled material pilot collections -->
+  <g transform="translate(300, 740) rotate(1.5)">
+    <rect x="0" y="0" width="130" height="100" rx="3" ry="3" fill="#e884c3" stroke="#d975b1" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <text x="12" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#b4006e">6</text>
+    <foreignObject x="30" y="5" width="95" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">Recycled material pilot collections</div>
+        <div style="font-size: 9px; margin-top: 5px;">Owners: Lena &amp; Isabelle</div>
+        <div style="font-size: 9px;">Team: Kenji, Carlos</div>
+        <div style="font-size: 9px;">Timeline: Launch within 6 months</div>
+        <div style="font-size: 9px;">Next: Identify product categories</div>
+      </div>
+    </foreignObject>
+  </g>
+  
+  <!-- Next Steps sticky note -->
+  <g transform="translate(460, 740) rotate(-1)">
+    <rect x="0" y="0" width="200" height="100" rx="3" ry="3" fill="#a2c4ff" stroke="#8ab0ee" stroke-width="1" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.1))" />
+    <foreignObject x="10" y="5" width="180" height="90">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; font-size: 10px; color: #444; overflow-wrap: break-word; height: 100%;">
+        <div style="font-weight: bold;">NEXT STEPS</div>
+        <div style="font-size: 9px; margin-top: 5px;">• Each owner to prepare implementation brief with milestones, resources, budget, metrics</div>
+        <div style="font-size: 9px;">• Monthly progress reviews at leadership meetings</div>
+        <div style="font-size: 9px;">• Quarterly comprehensive review</div>
+        <div style="font-size: 9px;">• Develop phased roadmap for remaining initiatives</div>
+      </div>
+    </foreignObject>
+  </g>
+</svg> 
