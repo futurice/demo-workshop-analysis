@@ -4,6 +4,10 @@
 
 This repository contains synthetic output materials from a fictional strategy workshop for Sustainable Fashion Co., created to serve as demonstration data for an AI-powered workshop analysis tool. These materials simulate the outputs that would be generated during an actual sustainability strategy workshop, allowing for testing and showcasing analysis capabilities without requiring real workshop data.
 
+The majority of content that is of interest is under the phases 2 (breakout sessions), and 3 (sharing breakout outcomes, discussion and prioritization).
+
+The phases 1 and 4 are probably less interesting, mostly containing the intro and wrap-up of the workshop.
+
 ## Technology Used
 
 The synthetic workshop outputs were primarily generated using Claude 3.7 Sonnet, after initial experiments with Gemini 2.0 Flash which produced results that were less natural and realistic. The Claude-generated content better captures the conversational dynamics, strategic thinking processes, and natural flow of a workshop environment.
