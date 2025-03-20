@@ -27,5 +27,27 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  
+  <!-- Custom script to handle SVG files -->
+  <script>
+    // Plugin to handle SVG files
+    window.$docsify.plugins = [].concat(function(hook, vm) {
+      hook.beforeEach(function(content) {
+        // Check if the current page is an SVG file
+        if (vm.route.file && vm.route.file.endsWith('.svg')) {
+          // Create HTML that embeds the SVG
+          return `
+            <div class="svg-container">
+              <object data="${vm.route.file}" type="image/svg+xml" style="width:100%; max-width:800px; height:auto;">
+                Your browser does not support SVG
+              </object>
+              <p><a href="${vm.route.file}" target="_blank">Open SVG in new tab</a></p>
+            </div>
+          `;
+        }
+        return content;
+      });
+    }, window.$docsify.plugins)
+  </script>
 </body>
 </html>
