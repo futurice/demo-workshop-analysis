@@ -14,20 +14,8 @@ def local_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
-def add_footer():
-    """Add footer with app information"""
-    year = datetime.datetime.now().year
-    # Apply footer directly without extra div
-    st.markdown(
-        f"""
-        Workshop Analysis Tool © {year} | Powered by Azure OpenAI
-        """,
-        unsafe_allow_html=True,
-    )
-
-
 def main():
-    # Set page config
+    # Configure page settings
     st.set_page_config(
         page_title="Workshop Analysis Tool",
         page_icon="📊",
@@ -35,19 +23,14 @@ def main():
         initial_sidebar_state="expanded",
     )
 
-    # Load custom CSS for component styling first
+    # Load CSS
     css_path = os.path.join(os.path.dirname(__file__), "static", "style.css")
     local_css(css_path)
 
-    # Apply direct CSS fixes with targeted selectors
+    # Apply styling
     st.markdown(
         """
         <style>
-        /* Fix the white space at the top */
-        .st-emotion-cache-1544g2n {
-            padding-top: 0rem !important;
-        }
-        
         /* Set background color */
         .stApp {
             background-color: #EBF5FB;
@@ -78,13 +61,7 @@ def main():
         
         /* Keep footer out of the way */
         footer {
-            visibility: hidden;
-        }
-        
-        /* Hide Streamlit's default footer */
-        footer:after {
-            content: none !important;
-            visibility: hidden !important;
+            display: none !important;
         }
         
         /* Better tab styling */
@@ -120,33 +97,21 @@ def main():
             font-weight: 600 !important;
         }
         </style>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # App header
-    st.markdown(
-        """
-        <h1>Sustainable Fashion Co. - Workshop Analysis Tool</h1>
-        <p class="app-subtitle">AI-powered insights from strategy workshop materials</p>
         """,
         unsafe_allow_html=True,
     )
 
-    # Add some vertical space
-    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+    # Header
+    st.title("Sustainable Fashion Co. - Workshop Analysis Tool")
+    st.markdown("AI-powered insights from strategy workshop materials")
 
-    # Load all phase data
+    # Load data
     phase_data = load_all_phase_data()
 
-    # Add some vertical space
-    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
-
-    # Let's structure the entire content in a proper order
+    # Main content
     tab1, tab2 = st.tabs(["Phase Details", "Workshop Overview"])
 
     with tab1:
-        # Create tabs for each phase
         phases = [
             "Phase 1: Setting the Stage",
             "Phase 2: Breakout Sessions",
@@ -154,23 +119,17 @@ def main():
             "Phase 4: Wrap-up & Next Steps",
         ]
 
-        # Create collapsible sections for each phase
         for i, phase_name in enumerate(phases, 1):
             with st.expander(phase_name, expanded=(i == 1)):
                 PhaseTab(f"phase_{i}", phase_data[f"phase_{i}"], i).render()
 
     with tab2:
-        # Create Overview Analysis section with simpler styling in a dedicated tab
         OverviewAnalysis(phase_data).render()
 
-    # Add final vertical space before footer - use Streamlit's component
-    st.write("")
-    st.write("")
-
-    # Simple text footer instead of div with class
-    st.text("")  # Add some space
-    st.divider()  # Add a divider
-    add_footer()
+    # Footer
+    st.divider()
+    year = datetime.datetime.now().year
+    st.caption(f"Workshop Analysis Tool © {year} | Powered by Azure OpenAI")
 
 
 if __name__ == "__main__":
