@@ -110,6 +110,7 @@ def generate_phase_highlights(
                 f"Notable point 2 for {phase_name}",
                 f"Notable point 3 for {phase_name}",
             ],
+            "source_documents": list(phase_data.keys()),
         }
 
     try:
@@ -151,7 +152,7 @@ def generate_phase_highlights(
                 {"role": "user", "content": user_message},
             ],
             temperature=0.5,
-            max_tokens=1000,
+            max_tokens=4000,
             top_p=0.95,
         )
 
@@ -180,6 +181,9 @@ def generate_phase_highlights(
                         result.setdefault("key_themes", [])
                         result.setdefault("notable_points", [])
 
+                    # Add source documents to the result
+                    result["source_documents"] = list(phase_data.keys())
+
                     return result
             except json.JSONDecodeError:
                 # If JSON parsing fails, extract insights manually
@@ -187,12 +191,18 @@ def generate_phase_highlights(
 
             # Fallback method if JSON parsing fails
             summary = response_text
-            return {"summary": summary, "key_themes": [], "notable_points": []}
+            return {
+                "summary": summary,
+                "key_themes": [],
+                "notable_points": [],
+                "source_documents": list(phase_data.keys()),
+            }
         else:
             return {
                 "summary": f"No analysis generated for Phase {phase_number}. Please try again.",
                 "key_themes": [],
                 "notable_points": [],
+                "source_documents": list(phase_data.keys()),
             }
 
     except Exception as e:
@@ -201,6 +211,7 @@ def generate_phase_highlights(
             "summary": f"An error occurred while analyzing Phase {phase_number}: {str(e)}",
             "key_themes": [],
             "notable_points": [],
+            "source_documents": list(phase_data.keys()),
         }
 
 
@@ -268,7 +279,7 @@ def generate_chat_response(
             model=DEFAULT_DEPLOYMENT,
             messages=messages,
             temperature=0.7,
-            max_tokens=1000,
+            max_tokens=4000,
             top_p=0.95,
             frequency_penalty=0,
             presence_penalty=0,
@@ -328,6 +339,14 @@ def generate_overview_analysis(
         "key_insights" (array of strings), "engagement_metrics" (object with metric names and values), and "action_items" (array of strings).
         """
 
+        # Add a request to generate topic mappings
+        user_message += """
+        
+        Additionally, create a "topic_mapping" object that connects key topics to the specific phases 
+        and documents where they are mentioned. For example, if blockchain is mentioned in Phase 3,
+        include it in the mapping.
+        """
+
         # Call the API
         response = client.chat.completions.create(
             model=DEFAULT_DEPLOYMENT,
@@ -336,7 +355,7 @@ def generate_overview_analysis(
                 {"role": "user", "content": user_message},
             ],
             temperature=0.5,
-            max_tokens=2000,
+            max_tokens=4000,
             top_p=0.95,
         )
 
@@ -364,6 +383,9 @@ def generate_overview_analysis(
                         result.setdefault("engagement_metrics", {})
                         result.setdefault("action_items", [])
 
+                    # Update the result structure to include topic mapping
+                    result.setdefault("topic_mapping", {})
+
                     return result
 
             except json.JSONDecodeError:
@@ -381,12 +403,14 @@ def generate_overview_analysis(
                 "action_items": [
                     "Review the generated insights and formulate action items"
                 ],
+                "topic_mapping": {},
             }
         else:
             return {
                 "key_insights": ["No analysis generated. Please try again."],
                 "engagement_metrics": {},
                 "action_items": [],
+                "topic_mapping": {},
             }
 
     except Exception as e:
@@ -399,6 +423,7 @@ def generate_overview_analysis(
             "action_items": [
                 "Contact support for assistance with the analysis generation"
             ],
+            "topic_mapping": {},
         }
 
 
@@ -432,6 +457,11 @@ def _prepare_system_message(context_data: Dict[str, Any]) -> str:
     Answer questions based on the following workshop materials and their analyses:
     """
 
+    # Add a document index with metadata at the beginning
+    system_message += "\n\n=== DOCUMENT INDEX ===\n"
+    for i, (doc_name, _) in enumerate(document_content):
+        system_message += f"Document {i+1}: {doc_name}\n"
+
     # Add generated content (highlights, summaries) first for priority
     if generated_content:
         system_message += "\n\n=== AI-GENERATED ANALYSES ===\n"
@@ -445,13 +475,16 @@ def _prepare_system_message(context_data: Dict[str, Any]) -> str:
         for doc_name, doc_content in document_content:
             system_message += f"\n--- Document: {doc_name} ---\n{doc_content}\n"
 
-    # Add final instructions
+    # Add better retrieval instructions
     system_message += """
     
-    Provide concise, factual responses based on the information in these materials.
-    When answering questions about highlights, summaries, or analyses, prioritize information from the AI-generated analyses.
-    If asked about specific document details not covered in the analyses, reference the workshop documents.
-    If you don't know or the information is not in the materials, say so clearly.
+    When asked about specific topics, concepts, or items:
+    1. First check if the topic appears in the AI-generated analyses
+    2. If found, identify which phase or document it originated from
+    3. Then search the workshop documents for the specific mention and context
+    4. In your response, cite the specific phase and document where the information was found
+    
+    Always mention the specific source (Phase X, Document Name) when referencing information.
     """
 
     return system_message

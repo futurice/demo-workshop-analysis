@@ -1,5 +1,6 @@
 import streamlit as st
 from typing import Dict, List, Any, Optional
+import json
 
 from src.utils.azure_openai import generate_chat_response
 
@@ -88,6 +89,12 @@ class ChatInterface:
                 enhanced_context["[GENERATED] Workshop Overview Analysis"] = (
                     overview_text
                 )
+
+        # Add a special section for topic mapping
+        if hasattr(st.session_state, "topic_mapping"):
+            enhanced_context["[INDEX] Topic to Document Mapping"] = json.dumps(
+                st.session_state.topic_mapping
+            )
 
         return enhanced_context
 

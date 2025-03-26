@@ -38,6 +38,16 @@ class PhaseTab:
             st.session_state[f"highlights_{self.phase_id}"] = highlights
             st.session_state[f"highlights_generated_{self.phase_id}"] = True
 
+            # Extract key terms and their locations
+            key_terms = {}
+            for doc_name, doc_content in self.phase_data.items():
+                if isinstance(doc_content, str):
+                    # Use an LLM call to extract key terms and concepts from the document
+                    # Store in session state
+                    pass
+
+            st.session_state[f"key_terms_{self.phase_id}"] = key_terms
+
     def render(self):
         """Render the phase tab content with documents and chat interface"""
         if not self.phase_data:
