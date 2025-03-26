@@ -69,55 +69,76 @@ class OverviewAnalysis:
             if st.button("Generate Analysis", type="primary"):
                 self.generate_analysis()
         else:
-            # Create two subtabs for Analysis and Chat
-            analysis_tab, chat_tab = st.tabs(
-                ["Analysis Results", "Chat with AI Assistant"]
-            )
+            # CHANGE: Remove tabs and display all content sequentially
 
-            with analysis_tab:
-                # Display the generated analysis in columns
-                col1, col2 = st.columns(2)
+            # 1. Display Engagement Metrics first as horizontal boxes
+            st.subheader("Engagement Metrics")
+            if st.session_state.engagement_metrics:
+                # Calculate number of metrics to display horizontally
+                num_metrics = len(st.session_state.engagement_metrics)
+                if num_metrics > 0:
+                    # Create columns for each metric
+                    metric_cols = st.columns(num_metrics)
 
-                with col1:
-                    st.subheader("Key Insights")
-                    if st.session_state.key_insights:
-                        for idx, insight in enumerate(st.session_state.key_insights, 1):
+                    # Display each metric in its own box with fixed dimensions
+                    for i, (category, value) in enumerate(
+                        st.session_state.engagement_metrics.items()
+                    ):
+                        with metric_cols[i]:
                             st.markdown(
-                                f'<div class="key-point-card"><strong>{idx}.</strong> {insight}</div>',
+                                f"""
+                                <div style="background-color: #f0f7fb; border-radius: 5px; 
+                                padding: 15px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                                min-height: 120px; width: 100%; display: flex; flex-direction: column; 
+                                justify-content: center; align-items: center;">
+                                    <p style="font-size: 0.9rem; color: #555; margin-bottom: 8px; 
+                                    width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{category}</p>
+                                    <p style="font-size: 1.4rem; font-weight: bold; color: #2E86C1; margin: 0;
+                                    width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{value}</p>
+                                </div>
+                                """,
                                 unsafe_allow_html=True,
                             )
-                    else:
-                        st.info("No key insights generated")
+                else:
+                    st.info("No engagement metrics generated")
 
-                    st.subheader("Action Items")
-                    if st.session_state.action_items:
-                        for idx, action in enumerate(st.session_state.action_items, 1):
-                            st.markdown(
-                                f'<div class="notable-point-card"><strong>{idx}.</strong> {action}</div>',
-                                unsafe_allow_html=True,
-                            )
-                    else:
-                        st.info("No action items generated")
+            # Add a small space after metrics section
+            st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
-                with col2:
-                    st.subheader("Engagement Metrics")
-                    if st.session_state.engagement_metrics:
-                        for (
-                            category,
-                            value,
-                        ) in st.session_state.engagement_metrics.items():
-                            st.markdown(
-                                f'<div class="metric-container">{category}: <strong>{value}</strong></div>',
-                                unsafe_allow_html=True,
-                            )
-                    else:
-                        st.info("No engagement metrics generated")
+            # 2. Key Insights and Action Items side by side
+            col1, col2 = st.columns(2)
 
-            with chat_tab:
-                # Render chat interface in its own tab
-                ChatInterface(
-                    phase_id="overview",
-                    phase_data=self.all_phase_data,
-                    placeholder_text="Ask a question about the Overview Analysis",
-                    key_suffix="overview",
-                ).render()
+            with col1:
+                st.subheader("Key Insights")
+                if st.session_state.key_insights:
+                    for idx, insight in enumerate(st.session_state.key_insights, 1):
+                        st.markdown(
+                            f'<div class="key-point-card"><strong>{idx}.</strong> {insight}</div>',
+                            unsafe_allow_html=True,
+                        )
+                else:
+                    st.info("No key insights generated")
+
+            with col2:
+                st.subheader("Action Items")
+                if st.session_state.action_items:
+                    for idx, action in enumerate(st.session_state.action_items, 1):
+                        st.markdown(
+                            f'<div class="notable-point-card"><strong>{idx}.</strong> {action}</div>',
+                            unsafe_allow_html=True,
+                        )
+                else:
+                    st.info("No action items generated")
+
+            # Add divider before chat interface
+            st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
+            st.divider()
+
+            # 3. Chat interface at the bottom (consistent with Phase layout)
+            st.subheader("Chat with AI Assistant")
+            ChatInterface(
+                phase_id="overview",
+                phase_data=self.all_phase_data,
+                placeholder_text="Ask a question about the Overview Analysis",
+                key_suffix="overview",
+            ).render()
