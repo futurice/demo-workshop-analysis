@@ -220,11 +220,7 @@ def _prepare_phase_context(phase_data: Dict[str, Any]) -> str:
         if isinstance(doc_content, str) and not doc_name.endswith(
             (".png", ".jpg", ".jpeg", ".svg")
         ):
-            # For text content, include a sample
-            sample = (
-                doc_content[:2000] + "..." if len(doc_content) > 2000 else doc_content
-            )
-            context_parts.append(f"--- {doc_name} ---\n{sample}")
+            context_parts.append(f"--- {doc_name} ---\n{doc_content}")
         else:
             # For non-text content, just note its existence
             context_parts.append(f"--- {doc_name} (non-text document) ---")
@@ -261,7 +257,7 @@ def generate_chat_response(
         # Add chat history if provided
         if chat_history:
             # Limit chat history to last 10 messages to avoid token limits
-            for msg in chat_history[-10:]:
+            for msg in chat_history:
                 messages.append({"role": msg["role"], "content": msg["content"]})
 
         # Add the current user query
@@ -301,30 +297,6 @@ def generate_overview_analysis(
     Returns:
         Dictionary containing key insights, engagement metrics, and action items
     """
-    if not client:
-        # Provide demo data for development when Azure OpenAI is not configured
-        return {
-            "key_insights": [
-                "AI service is not configured. This is a demo response.",
-                "Circular business models represent the greatest opportunity for sustainable growth.",
-                "Digital transformation is essential for communicating sustainability efforts.",
-                "Supply chain transparency is both a regulatory necessity and consumer demand.",
-                "Employee engagement in sustainability initiatives drives innovation.",
-            ],
-            "engagement_metrics": {
-                "Participation Rate": "90%",
-                "Ideas Generated": "42",
-                "Action Items Identified": "12",
-                "Cross-Department Collaboration": "High",
-            },
-            "action_items": [
-                "Launch product resale platform pilot by Q3 (Owner: Ben C.)",
-                "Implement blockchain-based supply chain tracking system (Owner: David R.)",
-                "Develop sustainability training program for all employees (Owner: Sarah C.)",
-                "Create digital sustainability reporting dashboard (Owner: Raj P.)",
-                "Establish materials innovation partnership with university (Owner: Kenji T.)",
-            ],
-        }
 
     try:
         # Prepare context from all phases
@@ -471,11 +443,7 @@ def _prepare_system_message(context_data: Dict[str, Any]) -> str:
     if document_content:
         system_message += "\n\n=== WORKSHOP DOCUMENTS ===\n"
         for doc_name, doc_content in document_content:
-            # Create a condensed version of regular documents
-            sample = (
-                doc_content[:1000] + "..." if len(doc_content) > 1000 else doc_content
-            )
-            system_message += f"\n--- Document: {doc_name} ---\n{sample}\n"
+            system_message += f"\n--- Document: {doc_name} ---\n{doc_content}\n"
 
     # Add final instructions
     system_message += """
