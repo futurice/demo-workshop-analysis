@@ -271,8 +271,50 @@ def generate_chat_response(
             for msg in chat_history:
                 messages.append({"role": msg["role"], "content": msg["content"]})
 
-        # Add the current user query
-        messages.append({"role": "user", "content": user_query})
+        # Determine if this is a topic location question
+        location_patterns = [
+            "where",
+            "which document",
+            "where is",
+            "mentioned in",
+            "discussed in",
+        ]
+        is_location_question = any(
+            pattern in user_query.lower() for pattern in location_patterns
+        )
+
+        if is_location_question:
+            # Add special instructions for location questions
+            special_instruction = f"""
+            SPECIAL INSTRUCTION: The user is asking where a topic is mentioned in the workshop materials.
+            1. Identify the specific topic they're asking about
+            2. Check the TOPIC NAVIGATION GUIDE for this topic
+            3. List ALL documents where this topic appears, organized by phase
+            4. Include 1-2 relevant quotes for context
+            5. Format your response with clear headings and document citations
+            
+            Example format:
+            
+            The topic "blockchain" appears in:
+            
+            PHASE 3:
+            - [Priority Matrix] - "Blockchain for supply chain transparency"
+            - [Breakout Session Notes] - "Group discussed blockchain implementation for..."
+            
+            PHASE 4:
+            - [Next Steps] - "Investigate blockchain solutions as a potential..."
+            """
+
+            # Add this instruction to the user query
+            messages.append(
+                {
+                    "role": "user",
+                    "content": special_instruction + "\n\nUser query: " + user_query,
+                }
+            )
+        else:
+            # Use regular query approach
+            messages.append({"role": "user", "content": user_query})
 
         # Call the API
         response = client.chat.completions.create(
@@ -450,42 +492,75 @@ def _prepare_system_message(context_data: Dict[str, Any]) -> str:
                 # This is a regular document
                 document_content.append((doc_name, doc_content))
 
-    # Build the system message with generated content first
+    # ENHANCED: Create document metadata dictionary
+    doc_metadata = {}
+    for doc_name, content in document_content:
+        # Determine phase
+        phase_id = "Unknown"
+        for p in range(1, 5):
+            if f"phase_{p}" in doc_name.lower():
+                phase_id = f"Phase {p}"
+                break
+
+        # Extract document type
+        doc_type = "Unknown"
+        if "matrix" in doc_name.lower():
+            doc_type = "Priority Matrix"
+        elif "summary" in doc_name.lower():
+            doc_type = "Summary"
+        elif "notes" in doc_name.lower():
+            doc_type = "Notes"
+        # Add more document types as needed
+
+        # Store metadata
+        doc_metadata[doc_name] = {
+            "phase": phase_id,
+            "type": doc_type,
+            "length": len(content),
+            "key_terms": _extract_key_terms(content),
+        }
+
+    # Build the enhanced system message
     system_message = """
     You are an expert AI assistant analyzing materials from a sustainability strategy workshop for Sustainable Fashion Co.
     
-    Answer questions based on the following workshop materials and their analyses:
+    INSTRUCTIONS FOR ANSWERING QUESTIONS:
+    1. When asked about a specific topic, FIRST check the TOPIC NAVIGATION GUIDE to find relevant documents
+    2. Then refer to those specific documents in the WORKSHOP DOCUMENTS section
+    3. Use AI-GENERATED ANALYSES to supplement your understanding
+    4. ALWAYS cite specific sources in your answer using format: [Phase X / Document Name]
+    5. Include relevant quotes when available
+    6. If information is not found, clearly state: "This topic is not mentioned in the workshop materials"
     """
 
-    # Add a document index with metadata at the beginning
-    system_message += "\n\n=== DOCUMENT INDEX ===\n"
-    for i, (doc_name, _) in enumerate(document_content):
-        system_message += f"Document {i+1}: {doc_name}\n"
+    # Add the topic navigation guide
+    system_message += "\n\n" + _build_topic_navigation_guide(doc_metadata)
 
-    # Add generated content (highlights, summaries) first for priority
+    # Add document structure map
+    system_message += "\n\n=== DOCUMENT STRUCTURE MAP ===\n"
+    phases = {}
+    for doc, metadata in doc_metadata.items():
+        phase = metadata["phase"]
+        if phase not in phases:
+            phases[phase] = []
+        phases[phase].append(doc)
+
+    for phase, docs in sorted(phases.items()):
+        system_message += f"\n{phase}:\n"
+        for doc in sorted(docs):
+            system_message += f"- {doc}\n"
+
+    # Add generated content
     if generated_content:
         system_message += "\n\n=== AI-GENERATED ANALYSES ===\n"
         for doc_name, doc_content in generated_content:
-            # Include the full content for generated analyses
             system_message += f"\n{doc_name}:\n{doc_content}\n"
 
-    # Add regular document content
+    # Add document content
     if document_content:
         system_message += "\n\n=== WORKSHOP DOCUMENTS ===\n"
         for doc_name, doc_content in document_content:
             system_message += f"\n--- Document: {doc_name} ---\n{doc_content}\n"
-
-    # Add better retrieval instructions
-    system_message += """
-    
-    When asked about specific topics, concepts, or items:
-    1. First check if the topic appears in the AI-generated analyses
-    2. If found, identify which phase or document it originated from
-    3. Then search the workshop documents for the specific mention and context
-    4. In your response, cite the specific phase and document where the information was found
-    
-    Always mention the specific source (Phase X, Document Name) when referencing information.
-    """
 
     return system_message
 
@@ -523,3 +598,82 @@ def _prepare_all_phases_context(all_phase_data: Dict[str, Dict[str, Any]]) -> st
         context_parts.append(phase_context)
 
     return "\n".join(context_parts)
+
+
+def _extract_key_terms(content: str) -> Dict[str, List[str]]:
+    """Extract key terms and their context from document content"""
+    # Define important strategic topics
+    key_topics = [
+        "blockchain",
+        "supply chain",
+        "transparency",
+        "sustainability",
+        "circular economy",
+        "materials",
+        "digital transformation",
+        "marketing",
+        "customer experience",
+        "regulatory compliance",
+        "innovation",
+        "metrics",
+        "competitive advantage",
+    ]
+
+    # Find mentions and context
+    topic_mentions = {}
+    for topic in key_topics:
+        if topic.lower() in content.lower():
+            # Find contexts where topic appears
+            contexts = []
+            sentences = [s.strip() for s in content.split(".") if s.strip()]
+
+            for sentence in sentences:
+                if topic.lower() in sentence.lower():
+                    contexts.append(sentence.strip())
+
+            if contexts:
+                # Limit to 3 most relevant contexts
+                topic_mentions[topic] = contexts[:3]
+
+    return topic_mentions
+
+
+def _build_topic_navigation_guide(doc_metadata: Dict[str, Dict]) -> str:
+    """Build a structured topic navigation guide"""
+    # Collect all unique topics mentioned across documents
+    all_topics = set()
+    for doc, metadata in doc_metadata.items():
+        all_topics.update(metadata.get("key_terms", {}).keys())
+
+    # Create topic-to-document mapping
+    topic_map = {}
+    for topic in sorted(all_topics):
+        topic_map[topic] = []
+        for doc, metadata in doc_metadata.items():
+            if topic in metadata.get("key_terms", {}):
+                # Add document with phase info
+                topic_map[topic].append(
+                    {
+                        "document": doc,
+                        "phase": metadata["phase"],
+                        "context": metadata["key_terms"][topic],
+                    }
+                )
+
+    # Format as structured navigation guide
+    guide = "=== TOPIC NAVIGATION GUIDE ===\n\n"
+    guide += "Use this guide to quickly locate information about specific topics:\n\n"
+
+    for topic in sorted(topic_map.keys()):
+        mentions = topic_map[topic]
+        if mentions:
+            guide += f"TOPIC: {topic.upper()}\n"
+            guide += f"Mentioned in {len(mentions)} document(s):\n"
+
+            for mention in mentions:
+                guide += f"- {mention['phase']} / {mention['document']}\n"
+                for context in mention["context"]:
+                    guide += f'  • "{context}"\n'
+            guide += "\n"
+
+    return guide
